@@ -1,0 +1,31 @@
+---
+#   - yum:
+#       name: httpd
+#       state: present
+#   - service:
+#       name: httpd
+#       state: started
+- name: "Install JRE"
+  yum:
+    name: java-1.8.0-openjdk
+    state: present
+- name: "Create root for app"
+  file:
+    path: /opt/carrental
+    state: directory
+- name: "Copy jar file to host"
+  copy:
+    src: carrental/car_rental.jar
+    dest: "{{remote_app_path}}"
+- name: "Create new user for app"
+  user:
+    name: "{{app_user}}"
+- name: "Copy systemd config"
+  template:
+    src: "{{local_service_app_path}}"
+    dest: "{{remote_service_app_path}}"
+- name: "Start app service"
+  systemd:
+    name: "car-rental"
+    daemon_reload: yes
+    state: restarted

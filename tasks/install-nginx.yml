@@ -1,0 +1,23 @@
+---
+- name: "Add EPEL repository"
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
+- name: "Install NGINX"
+  yum:
+    name: nginx
+    state: present
+- name: "Copy NGINX config"
+  template:
+    src: "{{local_nginx_config_path}}"
+    dest: "{{remote_nginx_config_path}}"
+- name: "Run NGINX"
+  service:
+    name: nginx
+    state: restarted
+- name: "Install Certbot"
+  yum:
+    name: python2-certbot-nginx
+    state: present
+- name: "Configure Certbox certificate"  
+  shell: 'certbot -i nginx -d "adsk.ml" --nginx -m "jakubszkarlat@gmail.com" --agree-tos --redirect'

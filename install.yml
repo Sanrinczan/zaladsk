@@ -1,0 +1,15 @@
+---
+- hosts: app_nodes
+  become: yes
+  tasks:
+    - include_tasks: tasks/install-app.yml
+    - include_tasks: tasks/install-telegraf.yml
+- hosts: statistics_nodes
+  become: yes
+  tasks:
+    - include_tasks: tasks/install-influx.yml
+    - include_tasks: tasks/install-grafana.yml
+- hosts: proxy_nodes
+  become: yes
+  tasks:
+    - include_tasks: tasks/install-nginx.yml

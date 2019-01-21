@@ -1,0 +1,14 @@
+---
+- name: "Install telegraf"
+  yum:
+    name: "{{telegraf_url}}"
+    state: present
+    
+- name: "Copy config"
+  template:
+    src: "{{telegraf_config_local_path}}"
+    dest: "{{telegraf_config_remote_path}}"
+- name: "Run telegraf"
+  service:
+    name: telegraf
+    state: restarted

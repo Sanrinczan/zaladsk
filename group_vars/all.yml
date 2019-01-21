@@ -1,0 +1,16 @@
+influxdb_url: https://dl.influxdata.com/influxdb/releases/influxdb-1.7.1.x86_64.rpm
+# grafana_url: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-4.4.0-1.x86_64.rpm
+grafana_url: https://dl.grafana.com/oss/release/grafana-5.4.3-1.x86_64.rpm
+telegraf_url: https://dl.influxdata.com/telegraf/releases/telegraf-1.8.3-1.x86_64.rpm
+stats_ip: 52.59.242.151
+remote_app_path: /opt/carrental/carrental.jar
+local_service_app_path: carrental/car_rental.service
+remote_service_app_path: /etc/systemd/system/car-rental.service
+local_grafana_path: templates/grafana.ini
+remote_grafana_path: /etc/grafana/grafana.ini
+grafana_dashboard_path: templates/wonderful.json
+local_nginx_config_path: templates/nginx.conf
+remote_nginx_config_path: /etc/nginx/conf.d/nginx.conf
+app_user: carrent
+telegraf_config_local_path: templates/telegraf.conf
+telegraf_config_remote_path: /etc/telegraf/telegraf.conf

@@ -1,0 +1,17 @@
+---
+- name: "Install MySQL server"
+  yum:
+    name: "{{packages}}"
+    state: present
+  vars:
+    packages:
+      - mariadb
+      - mariadb-server
+- name: "Install MySQL python package"
+  yum:
+    name: MySQL-python
+    state: present
+- name: "Run MySQL server"
+  service:
+    name: mariadb
+    state: started
