@@ -20,4 +20,4 @@
     name: python2-certbot-nginx
     state: present
 - name: "Configure Certbox certificate"  
-  shell: 'certbot -n -i nginx -d "adsk.ml" --nginx -m "jakubszkarlat@gmail.com" --agree-tos --redirect'
+  shell: 'certbot -n -i nginx -d "etdomain.tk" --nginx -m "etomasiak97@gmail.com" --agree-tos --redirect'
